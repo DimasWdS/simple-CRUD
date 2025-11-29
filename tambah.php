@@ -35,7 +35,8 @@
             <td><input class="hjgy" type="number" name="harga" required></td>
             <td><input class="hjgy" type="number" name="stok" required></td>
             <td>
-              <input class="btn-submit" type="submit" name="proses" value="Submit">
+              <!-- <input class="btn-submit" type="submit" name="proses" > -->
+               <button href="#" class="tambah-btn" type="submit" name="proses"><span></span><span>Tabahkan</span></button>
             </td>
           </tr>
         </table>
@@ -71,6 +72,10 @@
       </form>
     </main>
 
-    <script type="module" src="javascrip/tambah.js"></script>
+    <script >
+      const lokasi='tambah'
+      console.log(lokasi)
+      </script>
+      <script type="module" src="javascrip/tambah.js"></script>
   </body>
 </html>

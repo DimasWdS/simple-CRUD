@@ -8,50 +8,56 @@
   </head>
   <body>
     <section class="container-sidebar"></section>
+
     <main>
       <br>
+
       <table>
         <tr>
-          <td>Kode Barang</td>
-          <td>Nama Barang</td>
-          <td>Kategori</td>
-          <td>Harga</td>
-          <td>Stok</td>
+          <th>Kode Barang</th>
+          <th>Nama Barang</th>
+          <th>Kategori</th>
+          <th>Harga</th>
+          <th>Stok</th>
         </tr>
+
         <?php
-                // 1. Panggil file koneksi
-                include 'koneksi.php';
+        include 'koneksi.php';
 
-                // 2. Siapkan Query untuk mengambil semua data barang
-                $query = "SELECT * FROM barang";
-                
-                // 3. Eksekusi Query
-                $result = mysqli_query($koneksi, $query);
+        $query  = "SELECT * FROM barang";
+        $result = mysqli_query($koneksi, $query);
 
-               
+        // Jika query error
+        if (!$result) {
+            echo "<tr><td colspan='5'>Error: " . mysqli_error($koneksi) . "</td></tr>";
+        }
 
-                // 4. Lakukan Perulangan (Looping)
-                // mysqli_fetch_assoc mengubah data baris database menjadi array PHP
-                while ($row = mysqli_fetch_assoc($result)) {
-                ?>
+        // Jika tidak ada data
+        if (mysqli_num_rows($result) == 0) {
+            echo "<tr><td colspan='5'>Tidak ada data barang.</td></tr>";
+        }
 
-                <tr>
-                    
-                    <td><?php echo $row['kode_barang']; ?></td>
-                    <td><?php echo $row['nama_barang']; ?></td>
-                    
-                    <td><?php echo $row['kategori']; ?></td>
-                    <td>Rp <?php echo number_format($row['harga_jual'], 0, ',', '.'); ?></td>
-                    
-                    <td><?php echo $row['stok']; ?></td>
-                </tr>
-
-                <?php
-                } // Akhir dari kurung kurawal while
-                ?>
+        // Jika ada data → tampilkan
+        while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+            <tr>
+                <td><?= $row['kode_barang']; ?></td>
+                <td><?= $row['nama_barang']; ?></td>
+                <td><?= $row['kategori']; ?></td>
+                <td>Rp <?= number_format($row['harga_jual'], 0, ',', '.'); ?></td>
+                <td><?= $row['stok']; ?></td>
+            </tr>
+        <?php
+        }
+        ?>
       </table>
+
     </main>
 
-    <script type="module" src="javascrip/index.js"></script>
+    <script>
+      let lokasi='home'
+      console.log(lokasi)
+      </script>
+      <script type="module" src="javascrip/index.js"></script>
   </body>
 </html>

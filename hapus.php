@@ -39,18 +39,29 @@
             <td><?php echo $row['stok']; ?></td>
 
             <td>
-              <a 
-                href="code_aksi/hapus/hapus_data.php?kode=<?php echo $row['kode_barang']; ?>" 
-                onclick="return confirm('Yakin ingin menghapus data ini?')"
+
+            
+
+          
+
+              <a  class="hapus-btn"
+              href="code_aksi/hapus/hapus_data.php?kode=<?php echo $row['kode_barang']; ?>" 
+              onclick="return confirm('Yakin ingin menghapus data ini?')"
               >
-                Hapus
-              </a>
+            <span></span>
+              <span>Hapus</span>
+            </a>
+        
             </td>
           </tr>
         <?php } ?>
       </table>
     </main>
 
-    <script type="module" src="javascrip/hapus.js"></script>
+    <script >
+      const lokasi='hapus'
+      console.log(lokasi)
+      </script>
+      <script type="module" src="javascrip/hapus.js"></script>
   </body>
 </html>
