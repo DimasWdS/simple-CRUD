@@ -6,9 +6,10 @@ function createSideBar(conTarget) {
   container.appendChild(ul);
 
   Object.assign(container.style, {
-    height: "100%",
-    width: "100%",
+    height: "90%",
+    width: "90%",
     backgroundColor: "var(--primary-color)",
+    // backgroundColor: "green",
     padding: "1rem 0.4rem",
   });
 

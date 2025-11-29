@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,45 +15,39 @@
       <br>
       <table>
         <tr>
-          <td>Kode Barang</td>
-          <td>Nama Barang</td>
-          <td>Kategori</td>
-          <td>Harga</td>
-          <td>Stok</td>
-          <td>Aksi</td>
+          <th>Kode Barang</th>
+          <th>Nama Barang</th>
+          <th>Kategori</th>
+          <th>Harga</th>
+          <th>Stok</th>
+          <th>Aksi</th>
         </tr>
+
         <?php
-                // 1. Panggil file koneksi
-                include 'koneksi.php';
+        include 'koneksi.php';
 
-                // 2. Siapkan Query untuk mengambil semua data barang
-                $query = "SELECT * FROM barang";
-                
-                // 3. Eksekusi Query
-                $result = mysqli_query($koneksi, $query);
+        $query  = "SELECT * FROM barang";
+        $result = mysqli_query($koneksi, $query);
 
-               
+        while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+          <tr>
+            <td><?php echo $row['kode_barang']; ?></td>
+            <td><?php echo $row['nama_barang']; ?></td>
+            <td><?php echo $row['kategori']; ?></td>
+            <td>Rp <?php echo number_format($row['harga_jual'], 0, ',', '.'); ?></td>
+            <td><?php echo $row['stok']; ?></td>
 
-                // 4. Lakukan Perulangan (Looping)
-                // mysqli_fetch_assoc mengubah data baris database menjadi array PHP
-                while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-
-                <tr>
-                    
-                    <td><?php echo $row['kode_barang']; ?></td>
-                    <td><?php echo $row['nama_barang']; ?></td>
-                    
-                    <td><?php echo $row['kategori']; ?></td>
-                    <td>Rp <?php echo number_format($row['harga_jual'], 0, ',', '.'); ?></td>
-                    
-                    <td><?php echo $row['stok']; ?></td>
-                    <td><a href="#">hapus</a></td>
-                </tr>
-
-                <?php
-                } // Akhir dari kurung kurawal while
-                ?>
+            <td>
+              <a 
+                href="code_aksi/hapus/hapus_data.php?kode=<?php echo $row['kode_barang']; ?>" 
+                onclick="return confirm('Yakin ingin menghapus data ini?')"
+              >
+                Hapus
+              </a>
+            </td>
+          </tr>
+        <?php } ?>
       </table>
     </main>
 
