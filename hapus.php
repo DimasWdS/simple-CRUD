@@ -7,20 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hapus data</title>
     <link rel="stylesheet" href="css/universal.css" />
+    <link rel="stylesheet" href="css/universalv2.css" />
   </head>
   <body>
     <section class="container-sidebar"></section>
 
     <main>
       <br>
-      <table>
+     <section class="container-table">
+       <table>
         <tr>
-          <th>Kode Barang</th>
-          <th>Nama Barang</th>
-          <th>Kategori</th>
-          <th>Harga</th>
-          <th>Stok</th>
-          <th>Aksi</th>
+          <td>Kode Barang</td>
+          <td>Nama Barang</td>
+          <td>Kategori</td>
+          <td>Harga</td>
+          <td>Stok</td>
+          <td>Aksi</td>
         </tr>
 
         <?php
@@ -31,7 +33,7 @@
 
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-          <tr>
+          <tr class="table-barang">
             <td><?php echo $row['kode_barang']; ?></td>
             <td><?php echo $row['nama_barang']; ?></td>
             <td><?php echo $row['kategori']; ?></td>
@@ -56,6 +58,7 @@
           </tr>
         <?php } ?>
       </table>
+     </section>
     </main>
 
     <script >

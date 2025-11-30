@@ -18,6 +18,9 @@ $data = mysqli_fetch_assoc($result);
 </head>
 <body>
 
+    <section class="back">
+        <a href="../../update.php">Kembali</a>
+    </section>
     
     <form class="edit" action="update_proses.php" method="POST">
     <h2>Edit Data Barang</h2>

@@ -1,3 +1,19 @@
+.back {
+  position: absolute;
+  /* background-color: aqua; */
+  width: max-content;
+  margin: 2rem;
+}
+
+.back a {
+  padding: 0.3rem 1rem;
+  background-color: blue;
+  color: var(--primary-color);
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .edit {
   /* background-color: aqua; */
   display: flex;
@@ -31,6 +47,6 @@
   /* background-color: blue; */
 }
 .edit div button span:last-child {
-  color: var(--background-color);
+  color: var(--primary-color);
   font-weight: bold;
 }

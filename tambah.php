@@ -5,41 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tambah Data</title>
     <link rel="stylesheet" href="css/universal.css" />
+    <link rel="stylesheet" href="css/universalv2.css" />
+    <link rel="stylesheet" href="css/tambah/tambah.css">
   </head>
   <body>
     <section class="container-sidebar"></section>
 
     <main>
       <br>
-      <form action="" method="post">
-        <table>
-          <tr>
-            <th>Kode Barang</th>
-            <th>Nama Barang</th>
-            <th>Kategori</th>
-          </tr>
-
-          <tr>
-            <td><input class="hjgy" type="text" name="kode_barang" required></td>
-            <td><input class="hjgy" type="text" name="nama_barang" required></td>
-            <td><input class="hjgy" type="text" name="kategori" required></td>
-          </tr>
-
-          <tr>
-            <th>Harga</th>
-            <th>Stok</th>
-            <th></th>
-          </tr>
-
-          <tr>
-            <td><input class="hjgy" type="number" name="harga" required></td>
-            <td><input class="hjgy" type="number" name="stok" required></td>
-            <td>
-              <!-- <input class="btn-submit" type="submit" name="proses" > -->
-               <button href="#" class="tambah-btn" type="submit" name="proses"><span></span><span>Tabahkan</span></button>
-            </td>
-          </tr>
-        </table>
+      <form class="tambah" action="" method="post">
+      <div>
+        <label for="kode-barang">Masukan Kode barang </label>
+        <input id="kode-barang" class="hjgy" type="text" name="kode_barang" required>
+      </div>
+      <div>
+        <label for="nama-barang">Masukan nama barang</label>
+        <input id="nama-barang" class="hjgy" type="text" name="nama_barang" required>
+      </div>
+      <div>
+        <label for="kategori">Masukan kategori</label>
+        <input id="kategori" class="hjgy" type="text" name="kategori" required>
+      </div>
+      <div>
+        <label for="harga">Masukan Harga barang</label>
+        <input id="harga" class="hjgy" type="number" name="harga" required>
+      </div>
+      <div>
+        <label for="stok">Masukan stok barang</label>
+        <input id="stok" class="hjgy" type="number" name="stok" required>
+      </div>
+      <div>
+        <button href="#" class="tambah-btn" type="submit" name="proses"><span></span><span>Tabahkan</span></button>
+      </div>
+       
+          
+          
+         
+         
 
         <?php
         if (isset($_POST['proses'])) {

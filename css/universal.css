@@ -10,8 +10,8 @@ body {
 }
 
 :root {
-  --primary-color: #f3f3f3ff;
-  --background-color: #c3c3c3;
+  --primary-color: #fffcfb;
+  --background-color: #069783;
 }
 
 body {
@@ -61,27 +61,7 @@ main section {
   width: 100%;
   padding: 1rem;
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  /* background-color: var(--primary-color); */
-}
 
-table tr:first-child td {
-  border: 1px solid rgb(221, 2, 2);
-  background-color: var(--primary-color);
-  padding: 1rem;
-}
-
-table tr td {
-  border: 1px solid black;
-  background-color: var(--primary-color);
-  padding: 1rem;
-}
-
-table tr td:first-child {
-  border-radius: 5px !important;
-}
 .btn-submit {
   width: 100%;
   /* justify-content: center; */
@@ -145,6 +125,9 @@ table tr td:first-child {
 
 .halaman-active {
   background-color: var(--background-color);
+}
+.halaman-active a {
+  color: var(--primary-color) !important;
 }
 
 .update-btn {

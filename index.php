@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="css/universal.css" />
+    <link rel="stylesheet" href="css/universalv2.css" />
   </head>
   <body>
     <section class="container-sidebar"></section>
 
     <main>
       <br>
+      <section class="container-table">
 
+      
       <table>
         <tr>
-          <th>Kode Barang</th>
-          <th>Nama Barang</th>
-          <th>Kategori</th>
-          <th>Harga</th>
-          <th>Stok</th>
+          <td>Kode Barang</td>
+          <td>Nama Barang</td>
+          <td>Kategori</td>
+          <td>Harga</td>
+          <td>Stok</td>
         </tr>
 
         <?php
@@ -40,7 +43,7 @@
         // Jika ada data → tampilkan
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-            <tr>
+            <tr class="table-barang">
                 <td><?= $row['kode_barang']; ?></td>
                 <td><?= $row['nama_barang']; ?></td>
                 <td><?= $row['kategori']; ?></td>
@@ -51,7 +54,7 @@
         }
         ?>
       </table>
-
+</section>
     </main>
 
     <script>

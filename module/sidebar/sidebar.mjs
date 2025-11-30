@@ -21,8 +21,8 @@ function createSideBar(conTarget) {
     width: "90%",
     backgroundColor: "var(--primary-color)",
     // backgroundColor: "green",
-    padding: "0 0 0 1rem",
-    // borderRadius: "10px",
+    padding: "0 1rem 0 1rem",
+    borderRadius: "10px",
   });
 
   Object.assign(ul.style, {
@@ -41,15 +41,15 @@ function createSideBar(conTarget) {
 
     Object.assign(li.style, {
       listStyle: "none",
+      borderRadius: "5px",
     });
 
     Object.assign(a.style, {
       display: "inline-flex",
       padding: "1rem 0.4rem",
       width: "100%",
+      fontWeight: "bold",
     });
-
-    a.textContent = "tes";
 
     switch (true) {
       case i === 0:

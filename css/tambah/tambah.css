@@ -1,0 +1,11 @@
+.tambah {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 1rem;
+}
+
+.tambah div label {
+  color: var(--primary-color);
+  font-weight: 500;
+}
