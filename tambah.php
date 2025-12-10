@@ -27,12 +27,16 @@
         <input id="kategori" class="hjgy" type="text" name="kategori" required>
       </div>
       <div>
-        <label for="harga">Masukan Harga barang</label>
+        <label for="harga">Masukan Harga barang (per biji)</label>
         <input id="harga" class="hjgy" type="number" name="harga" required>
       </div>
       <div>
         <label for="stok">Masukan stok barang</label>
         <input id="stok" class="hjgy" type="number" name="stok" required>
+      </div>
+      <div>
+        <label for="stok">Masukan keterangan stok barang</label>
+        <input id="keterangan" class="hjgy" type="teks" name="keterangan" required>
       </div>
       <div>
         <button href="#" class="tambah-btn" type="submit" name="proses"><span></span><span>Tabahkan</span></button>
@@ -53,10 +57,11 @@
             $kategori    = mysqli_real_escape_string($koneksi, $_POST['kategori']);
             $harga       = (int) $_POST['harga'];
             $stok        = (int) $_POST['stok'];
+            $keterangan = mysqli_real_escape_string($koneksi, $_POST['keterangan']);
 
             // Query
-            $query = "INSERT INTO barang (kode_barang, nama_barang, kategori, harga_jual, stok) 
-                      VALUES ('$kode_barang', '$nama_barang', '$kategori', '$harga', '$stok')";
+            $query = "INSERT INTO barang (kode_barang, nama_barang, kategori, harga_jual, stok,keterangan) 
+                      VALUES ('$kode_barang', '$nama_barang', '$kategori', '$harga', '$stok','$keterangan')";
 
             $result = mysqli_query($koneksi, $query);
 

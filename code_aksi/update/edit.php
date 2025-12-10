@@ -49,6 +49,10 @@ $data = mysqli_fetch_assoc($result);
         <label>Stok:</label><br>
         <input type="number" name="stok" value="<?= $data['stok'] ?>"><br><br>
     </div>
+    <div>
+        <label>Keterangan:</label><br>
+        <input type="teks" name="keterangan" value="<?= $data['keterangan'] ?>"><br><br>
+    </div>
 
     <div>
         <button type="submit"><span></span><span>Simpan Perubahan</span></button>

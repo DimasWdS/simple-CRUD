@@ -17,8 +17,9 @@
           <td>Kode Barang</td>
           <td>Nama Barang</td>
           <td>Kategori</td>
-          <td>Harga</td>
+          <td>Harga (per biji)</td>
           <td>Stok</td>
+          <td>Keterangan (stok)</td>
           <td>Aksi</td>
         </tr>
 
@@ -36,6 +37,7 @@
             <td><?php echo $row['kategori']; ?></td>
             <td>Rp <?php echo number_format($row['harga_jual'], 0, ',', '.'); ?></td>
             <td><?php echo $row['stok']; ?></td>
+            <td><?php echo $row['keterangan']; ?></td>
 
             <td>
 
