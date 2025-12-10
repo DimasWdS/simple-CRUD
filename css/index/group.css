@@ -21,6 +21,17 @@
   width: 100%;
 }
 
+.container-filter form div input {
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.container-filter form div input:focus {
+  border: none;
+  outline: none;
+}
+
 .container-filter form div label {
   color: var(--background-color);
   font-weight: bold;

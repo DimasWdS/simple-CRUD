@@ -12,11 +12,15 @@
     <section class="container-sidebar"></section>
 
     
-    <main>
-
-    
+<main>
       <section class="container-filter">
         <form method="GET">
+          <div>
+            <label for="cari-nama">Cari Nama Barang</label>
+            <input type="text" name="cari-nama" id="cari-nama" 
+                   value="<?= isset($_GET['cari-nama']) ? htmlspecialchars($_GET['cari-nama']) : '' ?>" 
+                   >
+          </div>
 
           <div>
             <label for="group">Kelompokan berdasarkan ?</label>
@@ -41,90 +45,90 @@
           <div>
             <button type="submit" name="filterkan">Submit</button>
           </div>
-
         </form>
       </section>
-    
 
-   
       <section class="container-table">
+        <table>
+          <tr>
+            <td>Kode Barang</td>
+            <td>Nama Barang</td>
+            <td>Kategori</td>
+            <td>Harga (per biji)</td>
+            <td>Stok</td>
+            <td>Keterangan (stok)</td>
+          </tr>
 
-      <table>
-        <tr>
-          <td>Kode Barang</td>
-          <td>Nama Barang</td>
-          <td>Kategori</td>
-          <td>Harga (per biji)</td>
-          <td>Stok</td>
-          <td>Keterangan (stok)</td>
-        </tr>
+          <?php
+          include 'koneksi.php';
 
-        <?php
-        include 'koneksi.php';
+          $query = "SELECT * FROM barang";
+          
+        
+          $conditions = [];
 
-       
+         
+          if (isset($_GET['cari-nama']) && !empty($_GET['cari-nama'])) {
+              $keyword = mysqli_real_escape_string($koneksi, $_GET['cari-nama']);
+            
+              $conditions[] = "nama_barang LIKE '%$keyword%'"; 
+          }
 
-        $query = "SELECT * FROM barang";
+          // 2. Cek Kategori / Group
+          if (isset($_GET['group']) && !empty($_GET['group'])) {
+              $kategori = mysqli_real_escape_string($koneksi, $_GET['group']);
+              
+              if ($kategori == 'makanan' || $kategori == 'minuman') {
+                  $conditions[] = "kategori = '$kategori'";
+              }
+          }
 
-    
-        if (isset($_GET['group'])) {
-    switch ($_GET['group']) {
+         
+          if (count($conditions) > 0) {
+              $query .= " WHERE " . implode(" AND ", $conditions);
+          }
 
-        case 'makanan':
-            $query .= " WHERE kategori = 'makanan' ";
-            break;
+         
+          if (isset($_GET['sort'])) {
+              switch ($_GET['sort']) {
+                  case 'stok_desc':
+                      $query .= " ORDER BY stok DESC";
+                      break;
+                  case 'stok_asc':
+                      $query .= " ORDER BY stok ASC";
+                      break;
+                  case 'harga_desc':
+                      $query .= " ORDER BY harga_jual DESC";
+                      break;
+                  case 'harga_asc':
+                      $query .= " ORDER BY harga_jual ASC";
+                      break;
+              }
+          }
 
-        case 'minuman':
-            $query .= " WHERE kategori = 'minuman' ";
-            break;
-    }
-}
+          $result = mysqli_query($koneksi, $query);
 
-
-        if (isset($_GET['sort'])) {
-            switch ($_GET['sort']) {
-                case 'stok_desc':
-                    $query .= " ORDER BY stok DESC";
-                    break;
-                case 'stok_asc':
-                    $query .= " ORDER BY stok ASC";
-                    break;
-                case 'harga_desc':
-                    $query .= " ORDER BY harga_jual DESC";
-                    break;
-                case 'harga_asc':
-                    $query .= " ORDER BY harga_jual ASC";
-                    break;
-            }
-        }
-
-
-        $result = mysqli_query($koneksi, $query);
-
-        if (!$result) {
-            echo "<tr><td colspan='5'>Error: " . mysqli_error($koneksi) . "</td></tr>";
-        }
-
-        if (mysqli_num_rows($result) == 0) {
-            echo "<tr><td colspan='5'>Tidak ada data barang.</td></tr>";
-        }
-
-        while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-            <tr class="table-barang">
-                <td><?= $row['kode_barang']; ?></td>
-                <td><?= $row['nama_barang']; ?></td>
-                <td><?= $row['kategori']; ?></td>
-                <td>Rp <?= number_format($row['harga_jual'], 0, ',', '.'); ?></td>
-                <td><?= $row['stok']; ?></td>
-                <td><?= $row['keterangan']; ?></td>
-            </tr>
-        <?php
-        }
-        ?>
-      </table>
-
-    </section>
+          if (!$result) {
+              echo "<tr><td colspan='6'>Error: " . mysqli_error($koneksi) . "</td></tr>";
+          } elseif (mysqli_num_rows($result) == 0) {
+              echo "<tr><td colspan='6' style='text-align:center;'>Tidak ada data barang yang cocok.</td></tr>";
+          } else {
+              while ($row = mysqli_fetch_assoc($result)) {
+          ?>
+              <tr class="table-barang">
+                  <td><?= $row['kode_barang']; ?></td>
+                  <td><?= $row['nama_barang']; ?></td>
+                  <td><?= $row['kategori']; ?></td>
+                  <td>Rp <?= number_format($row['harga_jual'], 0, ',', '.'); ?></td>
+                  <td><?= $row['stok']; ?></td>
+                  <td><?= $row['keterangan']; ?></td>
+              </tr>
+          <?php
+              }
+          }
+          ?>
+        </table>
+      </section>
     </main>
 
     <script>
