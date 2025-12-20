@@ -27,7 +27,7 @@
         <input id="kategori" class="hjgy" type="text" name="kategori" required>
       </div>
       <div>
-        <label for="harga">Masukan Harga barang (per biji)</label>
+        <label for="harga">Masukan Harga barang </label>
         <input id="harga" class="hjgy" type="number" name="harga" required>
       </div>
       <div>

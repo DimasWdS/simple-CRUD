@@ -9,7 +9,7 @@
   </head>
   <body>
     <section class="container-sidebar"></section>
-        <main>
+      <main>
       <br>
       <section class="container-table">
         <table>
@@ -17,7 +17,7 @@
           <td>Kode Barang</td>
           <td>Nama Barang</td>
           <td>Kategori</td>
-          <td>Harga (per biji)</td>
+          <td>Harga </td>
           <td>Stok</td>
           <td>Keterangan (stok)</td>
           <td>Aksi</td>
@@ -25,9 +25,11 @@
 
         <?php
         include 'koneksi.php';
-
-        $query  = "SELECT * FROM barang";
-        $result = mysqli_query($koneksi, $query);
+         
+        
+         $query  = "SELECT * FROM barang";
+         $result = mysqli_query($koneksi, $query);
+         
 
         while ($row = mysqli_fetch_assoc($result)) {
         ?>

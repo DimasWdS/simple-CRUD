@@ -5,16 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="css/universal.css" />
+    
     <link rel="stylesheet" href="css/universalv2.css" />
     <link rel="stylesheet" href="css/index/group.css">
+    <link rel="stylesheet" href="css/index/index.css">
   </head>
   <body>
     <section class="container-sidebar"></section>
 
     
 <main>
-      <section class="container-filter">
-        <form method="GET">
+
+  <section class="container-navigasi">
+      <ul>
+      <li>
+        <a href="#">Semua Data</a>
+      </li>
+      <li>
+        <a href="transaksi.php">Data Transaksi</a>
+      </li>
+    </ul>
+  </section>
+
+
+  <section class="container-data">
+    <section class="container-filter">
+        <form  method="GET">
           <div>
             <label for="cari-nama">Cari Nama Barang</label>
             <input type="text" name="cari-nama" id="cari-nama" 
@@ -47,6 +63,8 @@
           </div>
         </form>
       </section>
+      
+
 
       <section class="container-table">
         <table>
@@ -54,7 +72,7 @@
             <td>Kode Barang</td>
             <td>Nama Barang</td>
             <td>Kategori</td>
-            <td>Harga (per biji)</td>
+            <td>Harga </td>
             <td>Stok</td>
             <td>Keterangan (stok)</td>
           </tr>
@@ -74,7 +92,7 @@
               $conditions[] = "nama_barang LIKE '%$keyword%'"; 
           }
 
-          // 2. Cek Kategori / Group
+          
           if (isset($_GET['group']) && !empty($_GET['group'])) {
               $kategori = mysqli_real_escape_string($koneksi, $_GET['group']);
               
@@ -129,6 +147,13 @@
           ?>
         </table>
       </section>
+      
+  </section>
+
+
+
+
+      
     </main>
 
     <script>

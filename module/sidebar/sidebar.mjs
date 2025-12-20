@@ -79,7 +79,7 @@ function createSideBar(conTarget) {
         }
         break;
       case i === 3:
-        a.textContent = "Update data";
+        a.textContent = "Edit data";
         a.setAttribute("href", "update.php");
         if (lokasi === "update") {
           console.log("ini diupdate");
